@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import * as HeroSolid from "react-native-heroicons/solid";
 import * as HeroOutline from "react-native-heroicons/outline";
 
-const ActionItem = ({ name, id, icon, size = 25, color = '#fff', variant = 'solid', close = false, plus = false}) => {
+const ActionItem = ({ name, id, icon, size = 23, color = '#fff', variant = 'solid', close = false, plus = false}) => {
   const sets = { solid: HeroSolid, outline: HeroOutline };
   const IconComponent = sets[variant]?.[icon];
 

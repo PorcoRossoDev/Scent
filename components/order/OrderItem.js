@@ -21,36 +21,36 @@ const OrderItem = ({ props }) => {
             <View className="flex-row justify-between items-start">
                 {/* Bên trái */}
                 <View>
-                    <Text className="text-f16 font-bold text-blue-700">240619-122</Text>
-                    <Text className="text-f16 font-bold mt-1">3.199.200 đ</Text>
+                    <Text className="text-f17 font-bold text-blue-700">240619-122</Text>
+                    <Text className="text-f17 font-bold mt-1">3.199.200 đ</Text>
                 </View>
 
                 {/* Bên phải */}
                 <View className="items-end">
                     <View className="bg-red-500 px-3 py-1 rounded-lg">
-                        <Text className="text-white text-f13 font-medium">Xuất kho</Text>
+                        <Text className="text-white text-f13 font-bold">Xuất kho</Text>
                     </View>
-                    <Text className="text-f12 text-right mt-2 mb-1 text-gray-500">13:39 24/09/2025</Text>
-                    <Text className="text-right">Tuấn Anh</Text>
+                    <Text className="text-f12 text-right mt-2 text-gray-500">13:39 24/09/2025</Text>
+                    <Text className="text-right font-medium mt-1">Tuấn Anh</Text>
                 </View>
             </View>
             <View className='flex-row items-center'>
-                <HeroSolid.UserCircleIcon size={22} color={'#333'} />
-                <View className='flex-row ml-2'>
-                    <Text>Anh Việt - </Text>
-                    <Text className='font-bold underline'>098765637</Text>
+                <HeroSolid.UserCircleIcon size={20} color={'#CECECE'} />
+                <View className='flex-row ml-3'>
+                    <Text className='text-f14'>Anh Việt - </Text>
+                    <Text className='font-medium underline text-f14'>098765637</Text>
                 </View>
             </View>
-            <View className='flex-row items-center my-1'>
-                <HeroSolid.MapPinIcon size={22} color={'#333'} />
-                <View className='flex-row ml-2'>
-                    <Text>361A Lê Văn Sỹ</Text>
+            <View className='flex-row items-center my-2'>
+                <HeroSolid.MapPinIcon size={20} color={'#CECECE'} />
+                <View className='flex-row ml-3'>
+                    <Text className='text-f14'>361A Lê Văn Sỹ</Text>
                 </View>
             </View>
             <View className='flex-row items-start'>
-                <HeroSolid.PencilSquareIcon size={22} color={'#333'} />
-                <Text className="ml-2">
-                <Text className="font-bold">Ghi chú: </Text>
+                <HeroSolid.PencilSquareIcon size={18} color={'#CECECE'} />
+                <Text className="ml-3">
+                    <Text className="font-bold text-f14">Ghi chú: </Text>
                     *** Khách Viết Chênh VAT số tiền: 9.969.100đ
                 </Text>
             </View>

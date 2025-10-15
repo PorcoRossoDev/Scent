@@ -9,26 +9,28 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-
+import FontLoader from 'app/config/FontLoader';
 import AppNavigation from './app/navigation/AppNavigator';
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <BottomSheetModalProvider>
-        <SafeAreaProvider>
-          <StatusBar
-            translucent={false}
-            backgroundColor={'#0089FF'}
-            barStyle={'light-content'}
-          />
-          <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-            <NavigationContainer>
-              <AppNavigation />
-            </NavigationContainer>
-          </SafeAreaView>
-        </SafeAreaProvider>
-      </BottomSheetModalProvider>
+      <FontLoader>
+        <BottomSheetModalProvider>
+          <SafeAreaProvider>
+            <StatusBar
+              translucent={false}
+              backgroundColor={'#0089FF'}
+              barStyle={'light-content'}
+            />
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+              <NavigationContainer>
+                <AppNavigation />
+              </NavigationContainer>
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </BottomSheetModalProvider>
+      </FontLoader>
     </GestureHandlerRootView>
   );
 }
