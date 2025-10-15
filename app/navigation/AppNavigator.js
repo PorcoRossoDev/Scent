@@ -39,6 +39,7 @@ const AppNavigation = () => {
                     shadowOffset: { width: 0, height: -3 },
                     shadowOpacity: 0.1,
                     shadowRadius: 4,
+                    // marginTop: 20,
                     elevation: 0, // Android bỏ shadow mặc định
                 },
                 tabBarItemStyle: {
@@ -58,7 +59,7 @@ const AppNavigation = () => {
                             <Icon color={color} width={24} height={24} />
                         ),
                         tabBarLabel: ({ color }) => (
-                            <Text className='font-medium text-sm text-center mt-1'>
+                            <Text className='font-medium text-sm text-center mt-1' style={{color:color}}>
                                 {label}
                             </Text>
                         ),

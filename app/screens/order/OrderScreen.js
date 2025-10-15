@@ -1,60 +1,36 @@
-import React, { useRef, useMemo, useCallback } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {OrderOverviewStack, OrderListStack, OrderCancelledStack} from './stack'
+import HeaderOrderCancelled from 'components/order/HeaderOrderCancelled';
 
-export default function BottomSheetDemo() {
-  // ref điều khiển BottomSheet
-  const bottomSheetModalRef = useRef(null);
-
-  // các snap points (độ cao các mức sheet)
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
-
-  // mở sheet
-  const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.present();
-  }, []);
-
-  // đóng sheet
-  const handleDismissModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.dismiss();
-  }, []);
-
+const Stack = createNativeStackNavigator();
+const OrderScreen = () => {
   return (
-    <View style={styles.container}>
-      <Button title="Mở Bottom Sheet" onPress={handlePresentModalPress} />
-
-      <BottomSheetModal
-        ref={bottomSheetModalRef}
-        index={1} // mở ở mức thứ 2 (50%)
-        snapPoints={snapPoints}
-        backgroundStyle={{ backgroundColor: '#fff' }}
-      >
-        <BottomSheetView style={styles.contentContainer}>
-          <Text style={styles.title}>Hello 👋</Text>
-          <Text>Đây là nội dung trong bottom sheet!</Text>
-          <View style={{ marginTop: 10 }}>
-            <Button title="Đóng lại" onPress={handleDismissModalPress} />
-          </View>
-        </BottomSheetView>
-      </BottomSheetModal>
-    </View>
+    <Stack.Navigator
+    screenOptions={{
+      headerTitleAlign: 'center',
+    }}
+    >
+      <Stack.Screen
+        name="OrderOverviewStack"
+        component={OrderOverviewStack}
+        options={{ title: 'Đơn hàng', headerBackVisible: false, }}
+      />
+      <Stack.Screen
+        name="OrderListStack"
+        component={OrderListStack}
+        options={{ title: 'Danh sách đơn hàng' }}
+      />
+      <Stack.Screen
+        name="OrderCancelledStack"
+        component={OrderCancelledStack}
+        options={{
+          header: () => <HeaderOrderCancelled />,
+        }}
+      />
+    </Stack.Navigator>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 20,
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginBottom: 10,
-  },
-});
+export default OrderScreen;
