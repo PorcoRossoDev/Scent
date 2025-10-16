@@ -15,8 +15,8 @@ const OrderOverviewStack = ({ navigation }) => {
       <View className='justify-center items-center bg-gray-200'>
 
         {/* Tạo đơn hàng */}
-        <View className='w-[90%] py-10 mt-7 justify-center items-center bg-white rounded-t-2xl'>
-          <TouchableOpacity className='justify-center text-center'>
+        <View className='w-[85%] py-10 mt-10 justify-center items-center bg-white rounded-t-2xl'>
+          <TouchableOpacity onPress={() => navigation.navigate('OrderAddStack')} className='justify-center text-center'>
             <View className='justify-center items-center'>
               <View className='w-[50px] h-[50px] justify-center items-center bg-blue-600 rounded-full'>
                 <HeroSolid.PlusIcon size={25} color={'white'} />
@@ -39,7 +39,7 @@ const OrderOverviewStack = ({ navigation }) => {
 
         {/* Đơn hàng */}
         <View className='bg-white mt-7 flex-1 w-full px-4 mb-6'>
-          <TouchableOpacity className='flex-row justify-between items-center py-4 border-b border-gray-100'>
+          <TouchableOpacity onPress={() => navigation.navigate('OrderPenddingStack')} className='flex-row justify-between items-center py-4 border-b border-gray-100'>
             <View className='flex-row items-center'>
               <HeroSolid.ClipboardDocumentListIcon size={30} color={'#6b7280'} />
               <Text className='pl-3'>Đơn hàng cần xử ý</Text>
@@ -51,7 +51,7 @@ const OrderOverviewStack = ({ navigation }) => {
                 </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={goOrderCancelled} className='flex-row justify-between items-center py-4 border-b border-gray-100'>
+          <TouchableOpacity onPress={() => navigation.navigate('OrderCancelledStack')} className='flex-row justify-between items-center py-4 border-b border-gray-100'>
             <View className='flex-row items-center'>
               <HeroSolid.ClipboardDocumentCheckIcon size={30} color={'#6b7280'} />
               <Text className='pl-3'>Đơn hàng huỷ</Text>

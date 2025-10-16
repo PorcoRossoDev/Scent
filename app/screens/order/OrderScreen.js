@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {OrderOverviewStack, OrderListStack, OrderCancelledStack} from './stack'
+import {OrderOverviewStack, OrderListStack, OrderCancelledStack, OrderPenddingStack, OrderFilterStack, OrderAddStack} from './stack'
 import HeaderOrderCancelled from 'components/order/HeaderOrderCancelled';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 const OrderScreen = () => {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator
     screenOptions={{
@@ -20,14 +22,58 @@ const OrderScreen = () => {
       <Stack.Screen
         name="OrderListStack"
         component={OrderListStack}
-        options={{ title: 'Danh sách đơn hàng' }}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Danh sách đơn hàng'} navigation={navigation} />,
+        })}
       />
       <Stack.Screen
         name="OrderCancelledStack"
-        component={OrderCancelledStack}
-        options={{
-          header: () => <HeaderOrderCancelled />,
-        }}
+        component={OrderListStack}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Đơn hàng huỷ'} navigation={navigation} />,
+        })}
+      />
+      <Stack.Screen
+        name="OrderSuccessStack"
+        component={OrderListStack}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Đơn hàng hoàn thành'} navigation={navigation} />,
+        })}
+      />
+      <Stack.Screen
+        name="OrderPaymentSuccessStack"
+        component={OrderListStack}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Đã thanh toán'} navigation={navigation} />,
+        })}
+      />
+      <Stack.Screen
+        name="UnpaidOrdersStack"
+        component={OrderListStack}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Chưa thanh toán'} navigation={navigation} />,
+        })}
+      />
+      <Stack.Screen
+        name="OrderPenddingStack"
+        component={OrderPenddingStack}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Đơn hàng cần xử lý'} navigation={navigation} />,
+        })}
+      />
+      <Stack.Screen
+        name="OrderFilterStack"
+        component={OrderFilterStack}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Bộ lọc'} navigation={navigation} />,
+        })}
+      />
+      <Stack.Screen
+        name="OrderAddStack"
+        component={OrderAddStack}
+        options={({navigation, route}) => ({
+          header: () => <HeaderOrderCancelled title={'Tạo đơn hàng'} navigation={navigation} />,
+        })}
       />
     </Stack.Navigator>
   );

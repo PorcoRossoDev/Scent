@@ -19,6 +19,11 @@ module.exports = {
         f17: ['17px'],
         f18: ['18px'],
       },
+      fontFamily: {
+        montserrat: ['montserrat-regular'],
+        'montserrat-bold': ['montserrat-bold'],
+        'montserrat-medium': ['montserrat-medium'],
+      },
     },
   },
   plugins: [],

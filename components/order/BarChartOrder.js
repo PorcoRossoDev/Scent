@@ -42,8 +42,8 @@ const BarChartOrder = () => {
   return (
     <View className=''>
       <Text className='text-f16 font-medium text-center'>Tăng trưởng đơn hàng trong tháng này</Text>
-        <View style={{ overflow: 'visible', width: '100%' }}>
-          <BarChart
+      <View style={{ overflow: 'visible', width: '100%' }}>
+        <BarChart
           initialSpacing
           data={data}
           barWidth={20}
@@ -62,11 +62,13 @@ const BarChartOrder = () => {
             marginTop: 6,              // tránh bị cắt
             transform: [{ rotate: '-60deg' }], // nghiêng label
             // textAlign: 'right',
+            textAnchor: 'end',
+            alignmentBaseline: 'middle',
           }}
           // xAxisLabelsHeight={70}         // tăng chiều cao vùng label
           width={chartWidth}
         />
-        </View>
+      </View>
     </View>
   );
 };
