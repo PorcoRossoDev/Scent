@@ -6,6 +6,7 @@ import {
   BottomSheetBackdrop,
 } from '@gorhom/bottom-sheet';
 import { Dropdown } from 'react-native-element-dropdown';
+import { SelectList } from 'react-native-dropdown-select-list'
 
 // forwardRef cho phép parent gọi ref.present()
 const BottomOrderFilterSheet = forwardRef((props, ref) => {
@@ -30,6 +31,17 @@ const BottomOrderFilterSheet = forwardRef((props, ref) => {
   ];
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
+    const [selected, setSelected] = useState("");
+
+  const data = [
+      {key:'1', value:'Mobiles', disabled:true},
+      {key:'2', value:'Appliances'},
+      {key:'3', value:'Cameras'},
+      {key:'4', value:'Computers', disabled:true},
+      {key:'5', value:'Vegetables'},
+      {key:'6', value:'Diary Products'},
+      {key:'7', value:'Drinks'},
+  ]
 
   return (
     <BottomSheetModal
@@ -41,7 +53,7 @@ const BottomOrderFilterSheet = forwardRef((props, ref) => {
       handleIndicatorStyle={styles.indicator}
       onDismiss={onClose}
     >
-      <BottomSheetView className='py-3'>
+      <BottomSheetView className='py-3 flex-1'>
         <View className='flex-row justify-between items-center mb-2 flex-1 px-5 border-b border-gray-200 pb-6'>
           <TouchableOpacity onPress={onClose}>
             <Text className="text-f16 text-blue-500 font-medium">Huỷ</Text>
@@ -52,23 +64,15 @@ const BottomOrderFilterSheet = forwardRef((props, ref) => {
           </TouchableOpacity>
         </View>
 
-        <ScrollView className='px-4' keyboardShouldPersistTaps="handled">
-          <View className='mt-4 z-[1000]'>
+        <ScrollView className='px-4 bg-gray-200 flex-1' keyboardShouldPersistTaps="handled">
+          <View className='mt-4 z-[1000] flex-1'>
             <Text>Khách hàng</Text>
             <View style={{ padding: 16, zIndex: 1000, position: 'relative' }}>
-        <Dropdown
-          style={[styles.dropdown, isFocus && { borderColor: '#0089FF' }]}
-          data={customers}
-          search
-          labelField="label"
-          valueField="value"
-          placeholder={!isFocus ? 'Chọn khách hàng' : '...'}
-          searchPlaceholder="Tìm kiếm..."
-          value={value}
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          onChange={item => setValue(item.value)}
-        />
+        <SelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={data} 
+        save="value"
+    />
       </View>
           </View>
         </ScrollView>
