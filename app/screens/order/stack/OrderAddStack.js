@@ -1,86 +1,78 @@
-import React, { useRef, useMemo, useCallback, useState, useLayoutEffect } from 'react';
-import { View, Text, Button, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
+import DropDownPicker from 'react-native-dropdown-picker';
+
+export default function OrderAddStack() {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+   const data = [
+        {label: 'Item 1', value: '1'},
+        {label: 'Item 2', value: '2'},
+        {label: 'Item 3', value: '3'},
+        {label: 'Item 4', value: '4'},
+        {label: 'Item 5', value: '5'},
+        {label: 'Item 6', value: '6'},
+        {label: 'Item 7', value: '7'},
+        {label: 'Item 8', value: '8'},
+    ];
 
 
-const OrderAddStack = () => {
-    const customers = [
-        { label: 'Nguyễn Văn A', value: '0' },
-        { label: 'Nguyễn Văn B', value: '1' },
-        { label: 'Nguyễn Văn C', value: '2' },
-      ];
-      const [value, setValue] = useState(null);
-      const [isFocus, setIsFocus] = useState(false);
+  return (
+    <View style={styles.container}>
+      <Text style={styles.label}>Chọn quốc gia:</Text>
 
-    return (
-        <View className='bg-gray-400 p-4'>
-                <Dropdown
-                  style={[styles.dropdown, isFocus && { borderColor: '#0089FF' }]}
-                  data={customers}
-                //   search
-                  labelField="label"
-                  valueField="value"
-                  placeholder={!isFocus ? 'Chọn khách hàng' : '...'}
-                  searchPlaceholder="Tìm kiếm..."
-                  value={value}
-                  onFocus={() => setIsFocus(true)}
-                  onBlur={() => setIsFocus(false)}
-                //   onChange={item => setValue(item.value)}
-                />
-              </View>
-    )
+       <View style={styles.container}>
+        <Dropdown
+        style={styles.dropdown}
+        data={data}
+        labelField="label"
+        valueField="value"
+        placeholder="Select item"
+        value={value}
+        onChange={item => setValue(item.value)}
+      />
+
+        </View>
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
-  sheetBackground: {
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-  indicator: {
-    backgroundColor: '#ccc',
-  },
-  contentContainer: {
+  container: {
     flex: 1,
-    alignItems: 'center',
+    justifyContent: 'center',
     padding: 20,
+    backgroundColor: '#fff',
   },
-  title: {
+  label: {
+    fontSize: 16,
     fontWeight: 'bold',
-    fontSize: 18,
     marginBottom: 10,
   },
-    dropdown: {
-      height: 50,
-      borderColor: 'gray',
-      borderWidth: 0.5,
-      borderRadius: 8,
-      paddingHorizontal: 8,
-    },
-    icon: {
-      marginRight: 5,
-    },
-    label: {
-      position: 'absolute',
-      backgroundColor: 'white',
-      left: 22,
-      top: 8,
-      zIndex: 999,
-      paddingHorizontal: 8,
-      fontSize: 14,
-    },
-    placeholderStyle: {
-      fontSize: 16,
-    },
-    selectedTextStyle: {
-      fontSize: 16,
-    },
-    iconStyle: {
-      width: 20,
-      height: 20,
-    },
-    inputSearchStyle: {
-      height: 40,
-      fontSize: 16,
-    },
+  dropdown: {
+    height: 50,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+  },
+  placeholderStyle: {
+    fontSize: 14,
+    color: '#999',
+  },
+  selectedTextStyle: {
+    fontSize: 14,
+    color: '#000',
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 14,
+  },
+  resultText: {
+    marginTop: 20,
+    fontSize: 16,
+    color: '#2563eb',
+  },
+  result: { marginTop: 20, fontSize: 16, color: '#2563eb' },
 });
-export default OrderAddStack

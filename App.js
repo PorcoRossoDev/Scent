@@ -9,17 +9,13 @@ import { NavigationContainer, useNavigationState } from '@react-navigation/nativ
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import FontLoader from 'app/config/FontLoader';
 import AppNavigation from './app/navigation/AppNavigator';
 
+
+
 export default function App() {
-
-
-
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      {/* <FontLoader> */}
         <BottomSheetModalProvider>
           <SafeAreaProvider>
             <StatusBar
@@ -34,7 +30,6 @@ export default function App() {
             </SafeAreaView>
           </SafeAreaProvider>
         </BottomSheetModalProvider>
-      {/* </FontLoader> */}
     </GestureHandlerRootView>
   );
 }
